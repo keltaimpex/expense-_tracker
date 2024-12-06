@@ -1,0 +1,59 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense List</title>
+    <script src="{% static 'scripts.js' %}"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Expense Tracker</h1>
+        <button id="toggle-dark-mode" style="margin: 10px; float: right;">Toggle Dark Mode</button>
+    </header>
+
+    <main>
+        <section>
+            <div style="text-align: center;">
+                <a href="{% url 'add_expense' %}" class="button">+ Add New Expense</a>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Description</th>
+                        <th>Amount</th>
+                        <th>Category</th>
+                        <th>Date</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for expense in expenses %}
+                        <tr>
+                            <td>{{ expense.description }}</td>
+                            <td>${{ expense.amount }}</td>
+                            <td>{{ expense.get_category_display }}</td>
+                            <td>{{ expense.date }}</td>
+                            <td>
+                                <a href="{% url 'edit_expense' expense.pk %}" class="button">Edit</a>
+                                <a href="{% url 'delete_expense' expense.pk %}" class="button" style="background-color: #dc3545;">Delete</a>
+                            </td>
+                        </tr>
+                    {% empty %}
+                        <tr>
+                            <td colspan="5" style="text-align: center;">No expenses found.</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <footer>
+        <p>Expense Tracker &copy; 2024</p>
+    </footer>
+</body>
+</html>

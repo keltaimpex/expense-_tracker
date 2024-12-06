@@ -1,0 +1,128 @@
+/* Default Light Mode Theme */
+:root {
+    --background-color: #f4f7fc;
+    --text-color: #333;
+    --header-footer-bg: #343a40;
+    --header-footer-text: #fff;
+    --table-bg: #fff;
+    --table-header-bg: #007bff;
+    --table-header-text: #fff;
+    --button-bg: #007bff;
+    --button-hover-bg: #0056b3;
+    --button-text: #fff;
+}
+
+/* Dark Mode Theme */
+body.dark-mode {
+    --background-color: #181a1b;
+    --text-color: #dcdcdc;
+    --header-footer-bg: #242526;
+    --header-footer-text: #e4e6eb;
+    --table-bg: #242526;
+    --table-header-bg: #3a3b3c;
+    --table-header-text: #e4e6eb;
+    --button-bg: #007bff;
+    --button-hover-bg: #0056b3;
+    --button-text: #fff;
+}
+
+/* Global Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    transition: background-color 0.3s, color 0.3s;
+    opacity: 0; /* For fade-in animation */
+    animation: fadeIn 0.5s ease-in-out forwards;
+}
+
+header, footer {
+    background-color: var(--header-footer-bg);
+    color: var(--header-footer-text);
+    text-align: center;
+    padding: 1rem;
+}
+
+header h1, footer p {
+    margin: 0;
+}
+
+/* Buttons and Links */
+button, a.button {
+    background-color: var(--button-bg);
+    color: var(--button-text);
+    border: none;
+    padding: 10px 15px;
+    text-decoration: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+button:hover, a.button:hover {
+    background-color: var(--button-hover-bg);
+    transform: scale(1.05);
+}
+
+/* Table Styles */
+table {
+    width: 90%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    background-color: var(--table-bg);
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+thead {
+    background-color: var(--table-header-bg);
+    color: var(--table-header-text);
+}
+
+thead th {
+    padding: 10px;
+    text-align: left;
+}
+
+tbody tr {
+    border-bottom: 1px solid #ddd;
+    transition: background-color 0.3s;
+}
+
+tbody tr:hover {
+    background-color: var(--button-hover-bg);
+    color: var(--button-text);
+}
+
+td {
+    padding: 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    table {
+        width: 100%;
+    }
+
+    header h1 {
+        font-size: 1.5rem;
+    }
+
+    button {
+        padding: 8px 12px;
+        font-size: 0.9rem;
+    }
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
